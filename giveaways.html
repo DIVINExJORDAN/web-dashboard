@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Active Giveaways</h1>
+{% if is_empty %}
+<p class="text-muted">No giveaways are currently active.</p>
+{% else %}
+<ul>
+    {% for giveaway in giveaways %}
+    <li><strong>{{ giveaway.name }}</strong>: {{ giveaway.reward }} (ends {{ giveaway.end_time }})</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

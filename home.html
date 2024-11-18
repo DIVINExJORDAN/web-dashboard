@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- Hero Section with Background Image and Call to Action -->
+<div class="hero bg-dark text-light text-center py-5" style="background-image: url('/static/logo/welcome.jpg'); background-size: cover; background-position: center;">
+    <div class="container">
+        <h1 class="display-3 font-weight-bold mb-4">Welcome to DIVINE x G3N</h1>
+        <p class="lead mb-4">Manage your bot, track performance, engage with your community, and more—all in one place.</p>
+        <a href="/services" class="btn btn-primary btn-lg m-2">Start Managing</a>
+        <a href="/stats" class="btn btn-outline-light btn-lg m-2">View Analytics</a>
+    </div>
+</div>
+
+<!-- Server Introduction Section (Single Paragraph) -->
+<section class="server-intro py-5">
+    <div class="container text-center">
+        <h2 class="mb-4">About the Server</h2>
+        <p class="lead mb-4">Welcome to DIVINE x G3N, where bot management becomes seamless. Whether you're managing services, tracking statistics, or running giveaways, our dashboard gives you all the tools you need in one place.</p>
+        <p class="mb-4">With our platform, you can manage your bot effortlessly, monitor its performance, and engage your community. Everything you need is just a click away!</p>
+    </div>
+</section>
+
+<!-- Key Features Section without Boxes -->
+<section class="features py-5" style="background-color: #222222; color: #fff;">
+    <div class="container text-center">
+        <h2 class="mb-4">Key Features</h2>
+        <p class="lead mb-5">Explore what we offer to enhance your bot management experience. Our platform provides the best tools for efficiency and engagement.</p>
+        <div class="row justify-content-center">
+            <div class="col-md-6 mb-5">
+                <h3 class="mb-3">Service Management</h3>
+                <p>Easily manage your services, track stock, and update them in real-time. This makes it easier than ever to keep your community engaged.</p>
+                <a href="/stock" class="btn btn-outline-light">Explore Services</a>
+            </div>
+            <div class="col-md-6 mb-5">
+                <h3 class="mb-3">Analytics Dashboard</h3>
+                <p>Track your bot's usage, monitor performance, and gain insights to optimize your server’s functionality.</p>
+                <a href="/stats" class="btn btn-outline-light">View Analytics</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="how-it-works py-5">
+    <div class="container text-center">
+        <h2 class="mb-4">How It Works</h2>
+        <p class="lead mb-4">Our platform provides easy-to-use features designed to help you manage and grow your server. Here’s how it works:</p>
+        <div class="row justify-content-center">
+            <div class="col-md-4 mb-4">
+                <h3>Manage Your Bot</h3>
+                <p>From service management to giveaways, control all aspects of your bot with just a few clicks.</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h3>Track Performance</h3>
+                <p>Analyze stats, usage logs, and performance metrics in real time to keep your bot running smoothly.</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h3>Engage Your Community</h3>
+                <p>Run exciting giveaways, track invites, and manage user engagement, all in one place.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonial Section -->
+<section class="testimonials py-5">
+    <div class="container text-center">
+        <h2 class="mb-4">What Our Users Say</h2>
+        <p class="lead mb-4">Don’t just take our word for it—see how our platform has helped users like you manage their bots with ease.</p>
+        <div class="row justify-content-center">
+            <div class="col-md-4 mb-4">
+                <blockquote class="blockquote">
+                    <p class="mb-4">"DIVINE x G3N has transformed how we manage our bot. The simplicity and features make it incredibly easy to run our server efficiently!"</p>
+                    <footer class="blockquote-footer">Server Admin</footer>
+                </blockquote>
+            </div>
+            <div class="col-md-4 mb-4">
+                <blockquote class="blockquote">
+                    <p class="mb-4">"The analytics tools are a game-changer. We can now track every interaction and optimize our server’s performance in real-time."</p>
+                    <footer class="blockquote-footer">Community Manager</footer>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="cta py-5 text-center" style="background-color: #222222; color: #fff;">
+    <div class="container">
+        <h2 class="mb-4">Ready to Get Started?</h2>
+        <p class="lead mb-4">Join us today and take control of your bot management with DIVINE x G3N. Sign up and start managing your services right away!</p>
+        <a href="/services" class="btn btn-primary btn-lg m-2">Get Started</a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer py-4" style="background-color: #222222; color: #fff;">
+    <div class="container text-center">
+        <p class="mb-0">Powered by DIVINE x G3N | Designed with 💜</p>
+        <div class="mt-3">
+            <a href="https://discord.com/invite/CCSs7HBhpF" class="btn btn-outline-light btn-sm m-2">Join Our Discord</a>
+            <a href="https://twitter.com" class="btn btn-outline-light btn-sm m-2">Follow Us</a>
+        </div>
+    </div>
+</footer>
+
+{% endblock %}

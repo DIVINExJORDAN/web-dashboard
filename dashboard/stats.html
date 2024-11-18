@@ -1,0 +1,160 @@
+<html>
+<head>
+    <title>Bot Stats Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='logo/fevicon.png') }}" type="image/png">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Top Toolbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <!-- Logo on the left -->
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="\static\logo\divinexgen.jpg" alt="Logo" style="width: 50px; height: 50px;">
+            </a>
+
+            <!-- Title in the center -->
+            <a class="navbar-brand mx-auto" href="#">DIVINE G3N</a>
+
+            <!-- Dropdown Menu for navigation -->
+            <div class="dropdown">
+                <button class="btn btn-dark dropdown-toggle" type="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    Menu
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="/">Home</a></li>
+                    <li><a class="dropdown-item" href="/stock">Stock</a></li>
+                    <li><a class="dropdown-item" href="/stats">Stats</a></li>
+                    <li><a class="dropdown-item" href="/services">Services</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Main Content Area -->
+    <div class="container-fluid mt-4">
+        {% block content %}{% endblock %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/script.js"></script>
+
+<div class="container mx-auto p-6">
+    <h1 class="text-4xl font-bold mb-6 text-center">
+        Discord Bot Stats Dashboard
+    </h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-2">Uptime</h2>
+            <p class="text-3xl" id="uptime">{{ stats.uptime }}</p>
+            <p class="text-sm text-gray-400">Last 24 hours</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-2">Latency</h2>
+            <p class="text-3xl" id="latency">{{ stats.latency }} ms</p>
+            <p class="text-sm text-gray-400">Average</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-2">Total Servers</h2>
+            <p class="text-3xl" id="total-servers">{{ stats.servers }}</p>
+            <p class="text-sm text-gray-400">Currently active</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-2">Total Members</h2>
+            <p class="text-3xl" id="total-members">{{ stats.users }}</p>
+            <p class="text-sm text-gray-400">Across all servers</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-2">CPU Usage</h2>
+            <p class="text-3xl" id="cpu-usage-percent">{{ stats.cpu_usage }}%</p>
+            <p class="text-sm text-gray-400">Current usage</p>
+            <canvas id="cpuUsageChart" height="100"></canvas>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-2">RAM Usage</h2>
+            <p class="text-3xl" id="ram-usage-percent">{{ stats.ram_usage }}%</p>
+            <p class="text-sm text-gray-400">Current usage</p>
+            <canvas id="ramUsageChart" height="100"></canvas>
+        </div>
+    </div>
+    <div class="mt-8">
+        <h2 class="text-2xl font-bold mb-4">Detailed Analytics</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-4">CPU Usage Over Time</h3>
+                <canvas id="cpuUsageOverTime" height="400"></canvas>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-4">RAM Usage Over Time</h3>
+                <canvas id="ramUsageOverTime" height="400"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="mt-8">
+        <h2 class="text-2xl font-bold mb-4">Additional Metrics</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-2">API Requests</h3>
+                <p class="text-3xl" id="api-requests">Loading...</p>
+                <p class="text-sm text-gray-400">Total requests handled</p>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-2">Errors</h3>
+                <p class="text-3xl" id="errors">Loading...</p>
+                <p class="text-sm text-gray-400">Errors encountered</p>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-2">Commands Executed</h3>
+                <p class="text-3xl" id="commands-executed">Loading...</p>
+                <p class="text-sm text-gray-400">Total commands executed</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    async function fetchStats() {
+        const response = await fetch('/stats/json');
+        if (response.ok) {
+            const stats = await response.json();
+            document.getElementById('api-requests').innerText = stats.api_requests || 'N/A'; // Update with actual data if available
+            document.getElementById('errors').innerText = stats.errors || 'N/A'; // Update with actual data if available
+            document.getElementById('commands-executed').innerText = stats.commands_executed || 'N/A'; // Update with actual data if available
+
+            // Update charts with real data
+            updateUsageCharts(stats.cpu_usage, stats.ram_usage);
+        } else {
+            console.error('Failed to fetch stats:', response.statusText);
+        }
+    }
+
+    // Function to update CPU and RAM usage charts
+    function updateUsageCharts(cpuUsage, ramUsage) {
+        cpuUsageChart.data.datasets[0].data.push(cpuUsage);
+        ramUsageChart.data.datasets[0].data.push(ramUsage);
+        cpuUsageChart.update();
+        ramUsageChart.update();
+    }
+
+    // Fetch stats on page load
+    fetchStats();
+
+    // Simulate real-time data updates every 5 seconds
+    setInterval(fetchStats, 5000);
+</script>
+</body>
+</html>

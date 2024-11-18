@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5 text-light">
+
+    <!-- Preview Section -->
+    <div class="text-center mb-4">
+        <h1 class="display-4">Services Overview</h1>
+        <p class="lead text-muted" style="font-weight: 300;">View the list of services and their respective account counts. You can manage them from below.</p>
+    </div>
+
+    <!-- Services List Section -->
+    <div class="list-group">
+        {% if stock %}
+            {% for service, accounts in stock.items() %}
+                <a href="{{ url_for('manage_service', service_name=service) }}" class="list-group-item list-group-item-action bg-dark text-light border-0 mb-2">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="font-weight-bold">{{ service }}</span>
+                        <span class="badge badge-light">{{ accounts|length }} accounts</span>
+                    </div>
+                </a>
+            {% endfor %}
+        {% else %}
+            <div class="text-center text-muted">
+                <p>No services available at the moment.</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Manage Button Section -->
+    <div class="d-flex justify-content-center mt-4">
+        <a href="{{ url_for('services') }}" class="btn btn-primary mx-2">Manage</a>
+        <a href="{{ url_for('home') }}" class="btn btn-outline-light mx-2">Return to Home</a>
+    </div>
+
+</div>
+{% endblock %}
